@@ -8,6 +8,7 @@
 ## Project structure
 - master/pytorch_analyzer.py : Main analysis script using torch
 - master/original_setup.sh : Copy of the setup script under analysis
+- ANALYSIS_RESULTS.md : Latest statistical analysis output (visible on GitHub)
 - requirements.txt : Dependencies
 
 ## Usage
@@ -15,6 +16,8 @@
 cd overdone_-dry_run
 python -m master.pytorch_analyzer --dry-run
 ```
+
+Results are also saved in [ANALYSIS_RESULTS.md](ANALYSIS_RESULTS.md).
 
 ## What it analyzes
 - Line counts, function definitions, command frequencies
