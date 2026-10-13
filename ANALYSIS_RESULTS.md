@@ -7,8 +7,8 @@ dnf install mentions: 13
 
 PyTorch tensor stats on counts:
   mean=133.00  std=189.59  median=20.00
-  95% CI low:  [411.8, 379.3, -7.2, -18.6, -34.0, -36.6, -26.8]
-  95% CI high: [487.8, 453.4, 71.3, 55.2, 35.5, 36.9, 51.9]
+  95% CI low:  [414.3, 377.4, -6.4, -17.6, -36.6, -35.9, -22.5]
+  95% CI high: [484.9, 451.5, 69.7, 57.6, 36.4, 40.2, 51.9]
 
 Simulated dry-run success probability: 87.0%
 (higher because of built-in retry logic on network/dnf calls)
@@ -27,5 +27,18 @@ Top token frequencies (rough package/command proxy):
 
 Dry-run mode: no packages would be installed; only logged actions.
 Original script supports --dry-run, --no-flatpak, --nvidia-open.
+
+=== table1.csv actions (NVIDIA / ROCm) ===
+  - akmods --force + reboot | NVIDIA driver | No (already working)
+  - usermod -a -G render,video | AMD ROCm access | Yes, if you want to use ROCm
+  - dnf install rocm | Full ROCm stack | Optional
+
+=== ROCm notes for AMD Radeon VII ===
+HIP_VISIBLE_DEVICES=0 rocminfo   # if the app is using system ROCm
+sudo usermod -a -G render,video $USER
+sudo dnf install rocm
+
+=== NVIDIA note ===
+After the RPM Fusion akmod-nvidia-580xx packages were installed, the proprietary driver took over.
 
 [dry-run] Analysis complete. No side effects.

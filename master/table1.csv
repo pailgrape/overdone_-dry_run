@@ -1,0 +1,4 @@
+Action,Needed for,Do you need it now?
+akmods --force + reboot,NVIDIA driver,No (already working)
+"usermod -a -G render,video",AMD ROCm access,"Yes, if you want to use ROCm"
+dnf install rocm,Full ROCm stack,Optional
