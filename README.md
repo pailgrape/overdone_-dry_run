@@ -1,9 +1,9 @@
-# overdone_-dry_run
-# Statistical analysis of fedora44-kde-gaming-1.1.0-fork using PyTorch
-#
-# This project performs statistical analysis on the Fedora 44 KDE Plasma
-# gaming setup script (FIRST-FORK 1.1.0). It extracts metrics from the
-# shell script and applies tensor-based statistical methods via PyTorch.
+overdone_-dry_run
+Statistical analysis of fedora44-kde-gaming-1.1.0-fork using PyTorch
+
+This project performs statistical analysis on the Fedora 44 KDE Plasma
+gaming setup script (FIRST-FORK 1.1.0). It extracts metrics from the
+ shell script and applies tensor-based statistical methods via PyTorch.
 
 ## Project structure
 - master/pytorch_analyzer.py : Main analysis script using torch
