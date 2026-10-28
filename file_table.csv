@@ -1,0 +1,8 @@
+File,Role in analysis,Area of care,Business sectors touched
+master/pytorch_analyzer.py,"Main statistical engine. Extracts metrics (lines, functions, run_net/dnf calls), runs PyTorch tensor stats (mean/std/median/CI), simulates dry-run success probability, loads table1.csv, writes results.","Script reliability & dry-run validation","IT Ops / DevOps / SRE; Linux desktop support; Software packaging"
+master/original_setup.sh,"Source script under analysis (Fedora 44 KDE gaming setup). Contains the actual run_net retry logic and 13 dnf install mentions.","Network-dependent package installation","Gaming / consumer hardware; Workstation imaging; Linux enterprise"
+master/table1.csv,"Explicit action table for NVIDIA (akmods --force) and AMD ROCm (usermod, dnf install rocm). Included verbatim in the report.","GPU driver / compute stack readiness","PC gaming; GPU compute / HPC / ML infrastructure; Hardware support"
+ANALYSIS_RESULTS.md,"Generated output of the analyzer. Shows counts, PyTorch stats, 87% simulated dry-run success (boosted by retry logic), token frequencies, and the table1 + ROCm/NVIDIA notes.","Quantitative reliability snapshot","SRE / reliability engineering; Automated provisioning"
+README.md,"Project overview and usage (cd master && python3 pytorch_analyzer.py --dry-run). Links to results.","Documentation of the analysis workflow","Internal tooling / knowledge base"
+requirements.txt,"Declares torch and numpy dependencies for the statistical layer.","Runtime for tensor-based stats","Data/ML tooling (light usage)"
+.gitignore,"Keeps __pycache__ and local artifacts out of the repo.","Repo hygiene","Standard software engineering"
