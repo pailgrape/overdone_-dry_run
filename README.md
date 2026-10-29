@@ -18,6 +18,7 @@ python -m master.pytorch_analyzer --dry-run
 ```
 
 Results are also saved in [ANALYSIS_RESULTS.md](ANALYSIS_RESULTS.md).
+Methods [statistical_analysis_area_and_business_sectors.md ](statistical_analysis_area_and_business_sectors.md)
 
 ## What it analyzes
 - Line counts, function definitions, command frequencies
