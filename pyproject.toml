@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "overdone-dry-run"
+version = "0.1.0"
+description = "Statistical analysis of the Fedora 44 KDE Plasma gaming setup script"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.0",
+  "numpy",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["master*"]
