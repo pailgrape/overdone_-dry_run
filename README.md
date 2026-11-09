@@ -10,6 +10,7 @@ gaming setup script (FIRST-FORK 1.1.0). It extracts metrics from the
 - master/original_setup.sh : Copy of the setup script under analysis
 - ANALYSIS_RESULTS.md : Latest statistical analysis output (visible on GitHub)
 - requirements.txt : Dependencies
+- docs/steam-launch-options.md : Optimized Steam launch options (Gamescope + FSR + MangoHud + GameMode)
 
 ## Usage
 ```bash
@@ -25,6 +26,9 @@ Methods [statistical_analysis_area_and_business_sectors.md ](statistical_analysi
 - Package installation patterns
 - Dry-run action simulation with statistical confidence intervals
 - GPU vendor detection logic branching probabilities (simulated)
+
+## Related practical notes
+See [Optimized Steam Launch Options](docs/steam-launch-options.md) for ready-to-paste Gamescope + FSR + MangoHud + GameMode configurations tailored to this setup.
 
 ## Notes
 The original package is a commercial fork with restrictive license.
