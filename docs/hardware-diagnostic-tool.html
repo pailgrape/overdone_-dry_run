@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedora 44 Gaming & Hardware Diagnostic Tool</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --text: #f8fafc;
+            --subtext: #94a3b8;
+            --code-bg: #090d16;
+            --border: #334155;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+            display: flex;
+            justify-content: center;
+        }
+        .container { max-width: 850px; width: 100%; display: flex; flex-direction: column; gap: 20px; }
+        header { border-bottom: 2px solid var(--border); padding-bottom: 12px; }
+        h1 { margin: 0 0 6px 0; font-size: 1.5rem; color: var(--accent); }
+        p { margin: 0; color: var(--subtext); font-size: 0.95rem; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+        .card-header { font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .cmd-box { background-color: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px; font-family: monospace; font-size: 0.85rem; color: #a5f3fc; overflow-x: auto; white-space: pre-wrap; }
+        .btn { background-color: var(--accent); color: #0f172a; border: none; border-radius: 4px; padding: 6px 12px; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+        .btn:hover { background-color: var(--accent-hover); color: #fff; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+        .form-group { display: flex; flex-direction: column; gap: 4px; }
+        label { font-size: 0.8rem; color: var(--subtext); text-transform: uppercase; letter-spacing: 0.5px; }
+        input, select, textarea { background: var(--code-bg); border: 1px solid var(--border); color: var(--text); padding: 8px; border-radius: 4px; font-family: inherit; }
+        textarea { resize: vertical; min-height: 80px; grid-column: span 2; }
+        .copy-banner { display: none; background: #15803d; color: #fff; padding: 8px; border-radius: 4px; text-align: center; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Fedora 44 Gaming System Quick-Check</h1>
+        <p>Run diagnostic commands in Konsole and summarize your configuration for GitHub or chat submissions.</p>
+    </header>
+    <div id="banner" class="copy-banner">Copied to clipboard!</div>
+    <div class="card">
+        <div class="card-header">
+            <span>1. Hardware & GPU Diagnostic Command</span>
+            <button class="btn" onclick="copyText('cmd1')">Copy Command</button>
+        </div>
+        <div class="cmd-box" id="cmd1">inxi -G -C -M -D --display</div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span>2. Firmware & Linux Kernel Status Command</span>
+            <button class="btn" onclick="copyText('cmd2')">Copy Command</button>
+        </div>
+        <div class="cmd-box" id="cmd2">uname -r; fwupdmgr get-updates; vulkaninfo --summary 2>/dev/null | head -n 20</div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <span>3. Hardware Profile Summary Form</span>
+        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Primary GPU</label>
+                <select id="gpu">
+                    <option value="AMD Radeon VII">AMD Radeon VII (amdgpu / radv)</option>
+                    <option value="NVIDIA RTX/GTX">NVIDIA Desktop (RTX / GTX)</option>
+                    <option value="NVIDIA Compute (P104-100)">NVIDIA Compute / Dual GPU (P104-100)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>CPU Platform</label>
+                <select id="cpu">
+                    <option value="AMD Ryzen 9 5950X">AMD Ryzen 9 5950X (AM4)</option>
+                    <option value="Intel Core">Intel Core</option>
+                </select>
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+                <label>Gaming Apps / Runtimes</label>
+                <input type="text" id="apps" value="Steam, Heroic, Gamescope, MangoHud, Lutris">
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+                <label>Terminal Output / Notes</label>
+                <textarea id="output" placeholder="Paste inxi or terminal logs here..."></textarea>
+            </div>
+        </div>
+        <div style="margin-top: 12px; text-align: right;">
+            <button class="btn" onclick="copySummary()">Copy Markdown Summary</button>
+        </div>
+    </div>
+</div>
+<script>
+    function copyText(id) {
+        navigator.clipboard.writeText(document.getElementById(id).innerText);
+        showBanner("Command copied!");
+    }
+    function copySummary() {
+        const gpu = document.getElementById('gpu').value;
+        const cpu = document.getElementById('cpu').value;
+        const apps = document.getElementById('apps').value;
+        const out = document.getElementById('output').value || "None provided";
+        const summary = `### System Hardware Profile\n- **GPU:** ${gpu}\n- **CPU:** ${cpu}\n- **Gaming Setup:** ${apps}\n\n### Terminal Output:\n\
+${out}\n\``;
+        navigator.clipboard.writeText(summary);
+        showBanner("Markdown summary copied!");
+    }
+    function showBanner(msg) {
+        const b = document.getElementById('banner');
+        b.innerText = msg; b.style.display = 'block';
+        setTimeout(() => { b.style.display = 'none'; }, 2500);
+    }
+</script>
+</body>
+</html>
