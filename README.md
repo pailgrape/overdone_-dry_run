@@ -10,7 +10,9 @@ gaming setup script (FIRST-FORK 1.1.0). It extracts metrics from the
 - master/original_setup.sh : Copy of the setup script under analysis
 - ANALYSIS_RESULTS.md : Latest statistical analysis output (visible on GitHub)
 - requirements.txt : Dependencies
-- docs/steam-launch-options.md : Optimized Steam launch options (Gamescope + FSR + MangoHud + GameMode)
+- docs/maintenance-and-diagnostics.md : Updates, NVIDIA conflict resolution, verification, Steam launch options, and hardware diagnostic tool
+- docs/hardware-diagnostic-tool.html : Interactive HTML hardware profiler
+- docs/steam-launch-options.md : Redirect to the maintenance document
 
 ## Usage
 ```bash
@@ -28,7 +30,12 @@ Methods [statistical_analysis_area_and_business_sectors.md ](statistical_analysi
 - GPU vendor detection logic branching probabilities (simulated)
 
 ## Related practical notes
-See [Optimized Steam Launch Options](docs/steam-launch-options.md) for ready-to-paste Gamescope + FSR + MangoHud + GameMode configurations tailored to this setup.
+See [Maintenance, Diagnostics & Launch Options](docs/maintenance-and-diagnostics.md) for:
+- DNF / Flatpak update workflow
+- NVIDIA 580xx package conflict resolution
+- Verification checkpoints
+- Optimized Steam launch options (Gamescope + FSR + MangoHud + GameMode)
+- Link to the interactive HTML hardware diagnostic tool
 
 ## Notes
 The original package is a commercial fork with restrictive license.
